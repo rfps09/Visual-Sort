@@ -1,5 +1,6 @@
 var cnv = document.getElementById("quadro");
 var ctx = cnv.getContext("2d");
+var ready = true;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -22,6 +23,19 @@ var base = vetorTeste.slice();
 
 render(vetorTeste);
 
+function ordenacao(ordenar){
+    if(ready){
+        ready = false;
+        window[ordenar](vetorTeste);
+    }
+}
+
+function reset() {
+    render(vetorTeste,vetorTeste.length,vetorTeste.length,true);
+    vetorTeste = base.slice();
+    ready = true;
+}
+
 async function bubbleSort(vetor) {
     var len = vetor.length;
     for(let i=1; i < len; i++) {
@@ -38,8 +52,7 @@ async function bubbleSort(vetor) {
         }
     }
 
-    render(vetor,vetor.length,vetor.length,true);
-    vetorTeste = base.slice();
+    reset();
 }
 
 async function selectionSort(vetor) {
@@ -61,8 +74,7 @@ async function selectionSort(vetor) {
         await sleep(500);
     }
 
-    render(vetor,vetor.length,vetor.length,true);
-    vetorTeste = base.slice();
+    reset();
 }
 
 async function insertionSort(vetor) {
@@ -81,8 +93,7 @@ async function insertionSort(vetor) {
         }
     }
 
-    render(vetor,vetor.length,vetor.length,true);
-    vetorTeste = base.slice();
+    reset();
 }
 
 async function shellSort(vetor) {
@@ -107,6 +118,5 @@ async function shellSort(vetor) {
         gap = Math.floor(gap/2);
     }
 
-    render(vetor,vetor.length,vetor.length,true);
-    vetorTeste = base.slice();
+    reset();
 }

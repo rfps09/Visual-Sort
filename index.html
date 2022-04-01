@@ -11,10 +11,10 @@
         <button onclick="render(vetorTeste)"> Desordenar </button>
     </div>
     <div>
-        <button onclick="sleep(2000).then(()=>{bubbleSort(vetorTeste)})"> BubbleSort </button>
-        <button onclick="sleep(2000).then(()=>{selectionSort(vetorTeste)})"> SelectionSort </button>
-        <button onclick="sleep(2000).then(()=>{insertionSort(vetorTeste)})"> InsertionSort </button>
-        <button onclick="sleep(2000).then(()=>{shellSort(vetorTeste)})"> ShellSort </button>
+        <button onclick="ordenacao('bubbleSort')"> BubbleSort </button>
+        <button onclick="ordenacao('selectionSort')"> SelectionSort </button>
+        <button onclick="ordenacao('insertionSort')"> InsertionSort </button>
+        <button onclick="ordenacao('shellSort')"> ShellSort </button>
     </div>
     <div>
         <canvas id="quadro" width="800" height="600" style="border: 1px solid white"></canvas>
