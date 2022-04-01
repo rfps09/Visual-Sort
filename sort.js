@@ -1,6 +1,7 @@
 var cnv = document.getElementById("quadro");
 var ctx = cnv.getContext("2d");
 var ready = true;
+var para = false;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -30,93 +31,16 @@ function ordenacao(ordenar){
     }
 }
 
-function reset() {
-    render(vetorTeste,vetorTeste.length,vetorTeste.length,true);
+async function parar() {
+    para = true;
+    await sleep(600);
+    reset(false);
+    render(vetorTeste);
+    para = false;
+}
+
+function reset(vd) {
+    render(vetorTeste,vetorTeste.length,vetorTeste.length,vd);
     vetorTeste = base.slice();
     ready = true;
-}
-
-async function bubbleSort(vetor) {
-    var len = vetor.length;
-    for(let i=1; i < len; i++) {
-        for(let j=0; j < len-i; j++) {
-            render(vetor, j);
-            await sleep(250);
-            if(vetor[j] > vetor[j+1]) {
-                let aux = vetor[j];
-                vetor[j] = vetor[j+1];
-                vetor[j+1] = aux;
-            }
-            render(vetor, j+1);
-            await sleep(250);
-        }
-    }
-
-    reset();
-}
-
-async function selectionSort(vetor) {
-    var len = vetor.length;
-    var menor;
-    for(let i=0; i < len; i++) {
-        menor = i;
-        for(let j=i; j < len; j++) {
-            if(vetor[menor] > vetor[j]) {
-                menor = j;
-            }
-            render(vetor, j, menor);
-            await sleep(500);
-        }
-        let aux = vetor[i];
-        vetor[i] = vetor[menor];
-        vetor[menor] = aux;
-        render(vetor,vetor.length,i);
-        await sleep(500);
-    }
-
-    reset();
-}
-
-async function insertionSort(vetor) {
-    var len = vetor.length;
-    for(let i=1; i < len; i++) {
-        let j=i;
-        render(vetor, i)
-        await sleep(500);
-        while(j && vetor[j] < vetor[j-1]) {
-            let aux = vetor[j];
-            vetor[j] = vetor[j-1];
-            vetor[j-1] = aux;
-            j--;
-            render(vetor, j)
-            await sleep(500);
-        }
-    }
-
-    reset();
-}
-
-async function shellSort(vetor) {
-    var len = vetor.length;
-    var gap = Math.floor(len/2);
-
-    while(gap) {
-        for(let i=gap; i < len; i++) {
-            let j=i;
-            render(vetor, i)
-            await sleep(500);
-            while(j-gap >= 0 && vetor[j] < vetor[j-gap]) {
-                let aux = vetor[j];
-                vetor[j] = vetor[j-gap];
-                vetor[j-gap] = aux;
-                j-=gap;
-                render(vetor, j)
-                await sleep(500);
-            }
-        }
-
-        gap = Math.floor(gap/2);
-    }
-
-    reset();
 }
