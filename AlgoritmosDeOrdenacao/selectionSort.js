@@ -12,7 +12,8 @@ async function selectionSort(vetor) {
             if(vetor[menor] > vetor[j]) {
                 menor = j;
             }
-            render(vetor, j, menor);
+            if(j != menor) render(vetor, j, menor);
+            else render(vetor,vetor.length,menor);
             await sleep(500);
         }
         let aux = vetor[i];

@@ -7,12 +7,12 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function render(vetor, index = vetor.length, indexComparer = vetor.length, ordenado = false) {
+function render(vetor, index = vetor.length, indexComparer = vetor.length, ordenado = false, pivot = vetor.length, mid = vetor.length) {
     ctx.clearRect(0,0,cnv.width, cnv.height);
     var len = vetor.length;
     for(let i=0; i < len; i++) {
         if(i == index) ctx.fillStyle = "red";
-        else if(i == indexComparer) ctx.fillStyle = "green";
+        else if(i == indexComparer || i == pivot || i == mid) ctx.fillStyle = "green";
         else ctx.fillStyle = "#FFFFFF";
         if(ordenado == true) ctx.fillStyle = "#42ff33";
         ctx.fillRect((800/len)*i,600-(600/len)*vetor[i],(800/len),(600/len)*vetor[i]);
