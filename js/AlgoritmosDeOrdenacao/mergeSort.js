@@ -1,27 +1,43 @@
 async function merge(vetor,left,right) {
-    var mid = Math.floor((right-left)/2);
+    var mid = Math.floor((right+left)/2);
     var vector = vetor.slice();
     var i=left,j=mid, k=left;
 
-    while(i < mid && j < right) {
-        if(vector[i] < vector[j]) {
+    while(i < mid && j < right && !para) {
+        if(vector[i] < vector[j] && !para) {
+            render(vetor,k);
+            await sleep(250);
             vetor[k] = vector[i];
+            render(vetor,k);
+            await sleep(250);
             i++;
         }
         else {
+            render(vetor,k);
+            await sleep(250);
             vetor[k] = vector[j];
+            render(vetor,k);
+            await sleep(250);
             j++;
         }
         k++;
     }
 
-    while(k < right) {
-        if(i < mid) {
+    while(k < right && !para) {
+        if(i < mid && !para) {
+            render(vetor,k);
+            await sleep(250);
             vetor[k] = vector[i];
+            render(vetor,k);
+            await sleep(250);
             i++;
         }
         else {
+            render(vetor,k);
+            await sleep(250);
             vetor[k] = vector[j];
+            render(vetor,k);
+            await sleep(250);
             j++;
         }
         k++;
@@ -29,11 +45,11 @@ async function merge(vetor,left,right) {
 }
 
 async function mergeSort(vetor,left=0,right=vetor.length) {
-    console.log(right,left);
-    if((right-left) > 1) {
-        var mid = Math.floor((right-left)/2);
+    if((right-left) > 1 && !para) {
+        var mid = Math.floor((right+left)/2);
         await mergeSort(vetor,left,mid);
         await mergeSort(vetor,mid,right);
         await merge(vetor,left,right);
+        if(left==0 && right==vetor.length && !para) reset(true);
     }
 }
