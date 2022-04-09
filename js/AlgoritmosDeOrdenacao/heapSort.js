@@ -8,13 +8,13 @@ async function heapify(vetor,index,len) {
 
     if(left < len && vetor[greater] > vetor[index]) {
         if(para) return;
-        render(vetor,greater);
+        render(vetor,new Map([[greater, "red"]]));
         await sleep(delay);
         let aux = vetor[index];
         vetor[index] = vetor[greater];
         vetor[greater] = aux;
         if(para) return;
-        render(vetor,index);
+        render(vetor,new Map([[index, "red"]]));
         await sleep(delay);
         await heapify(vetor,greater,len);
     }
@@ -33,16 +33,16 @@ async function heapSort(vetor,left=0,right=vetor.length) {
 
     for(let i=right-1; i > left; i--) {
         if(para) return;
-        render(vetor,0);
+        render(vetor,new Map([[0, "red"]]));
         await sleep(delay);
         let aux = vetor[i];
         vetor[i] = vetor[0];
         vetor[0] = aux;
         if(para) return;
-        render(vetor,i);
+        render(vetor,new Map([[i, "red"]]));
         await sleep(delay);
         await heapify(vetor,0,i);
     }
 
-    reset(true);
+    reset("ordenado");
 }

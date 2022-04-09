@@ -9,13 +9,15 @@
 </head>
 <body style="background-color: black; color: white; text-align: center;">
     <div>
+        <span> Tamanho : </span>
+        <button onclick="Tamanho('+')"> + </button> 
         <button onclick="Tamanho('-')">-</button>
-        <span> Tamanho <span id="TamanhoVetor">20</span> Elementos</span>
-        <button onclick="Tamanho('+')"> + </button>
-        <button onclick="parar()"> Desordenar </button>
-        <button onclick="Delay('-')">-</button>
-        <span> Delay <span id="velocidade">500</span>ms</span>
+        <span> </span><span id="TamanhoVetor">20</span> Elementos &nbsp</span>
+        <button onclick="parar()"> Parar e Desordenar </button>
+        <span>&nbsp Delay :</span>
         <button onclick="Delay('+')"> + </button>
+        <button onclick="Delay('-')">-</button>
+        <span> <span id="velocidade">500</span>ms</span>
     </div>
     <div>
         <button onclick="ordenacao('bubbleSort')"> BubbleSort </button>

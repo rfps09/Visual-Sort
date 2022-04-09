@@ -9,16 +9,15 @@ async function selectionSort(vetor) {
             if(vetor[menor] > vetor[j]) {
                 menor = j;
             }
-            if(j != menor) render(vetor, j, menor);
-            else render(vetor,vetor.length,menor);
+            render(vetor, new Map([[i, "Chocolate"],[j, "red"],[menor, "green"]]));
             await sleep(delay);
         }
         let aux = vetor[i];
         vetor[i] = vetor[menor];
         vetor[menor] = aux;
-        render(vetor,vetor.length,i);
+        render(vetor,new Map([[i, "green"]]));
         await sleep(delay);
     }
 
-    reset(true);
+    reset("ordenado");
 }

@@ -9,14 +9,17 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function render(vetor, index = vetor.length, indexComparer = vetor.length, ordenado = false, pivot = vetor.length, mid = vetor.length) {
+function render(vetor, mapa = new Map()) {
     ctx.clearRect(0,0,cnv.width, cnv.height);
     var len = vetor.length;
+    const estado = mapa.has("ordenado");
+
     for(let i=0; i < len; i++) {
-        if(i == index) ctx.fillStyle = "red";
-        else if(i == indexComparer || i == pivot || i == mid) ctx.fillStyle = "green";
-        else ctx.fillStyle = "#FFFFFF";
-        if(ordenado == true) ctx.fillStyle = "#42ff33";
+        ctx.fillStyle = "white";
+
+        if(estado) ctx.fillStyle = mapa.get("ordenado");
+        else if(mapa.has(i)) ctx.fillStyle = mapa.get(i);
+        
         ctx.fillRect((cnv.width/len)*i,cnv.height-(cnv.height/len)*vetor[i],(cnv.width/len),(cnv.height/len)*vetor[i]);
     }
 }
@@ -42,15 +45,17 @@ async function parar() {
     para = false;
 }
 
-function reset(vd) {
-    render(vetorTeste,vetorTeste.length,vetorTeste.length,vd);
+function reset(estado = "desordenado") {
+    var mapa = new Map();
+    mapa.set(estado, "lime");
+    render(vetorTeste,mapa);
     vetorTeste = base.slice();
     ready = true;
 }
 
 function Delay(acao) {
     if(acao == '+' && delay < 1000) delay += 50;
-    else if(acao == '-' && delay >= 150) delay -= 50;
+    else if(acao == '-' && delay >= 100) delay -= 50;
     document.getElementById('velocidade').innerHTML = delay;
 }
 

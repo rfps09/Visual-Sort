@@ -4,7 +4,7 @@ async function insertionSort(vetor) {
     for(let i=1; i < len; i++) {
         if(para) return;
         let j=i;
-        render(vetor, i)
+        render(vetor, new Map([[i, "red"]]))
         await sleep(delay);
         while(j && vetor[j] < vetor[j-1]) {
             if(para) return;
@@ -12,10 +12,10 @@ async function insertionSort(vetor) {
             vetor[j] = vetor[j-1];
             vetor[j-1] = aux;
             j--;
-            render(vetor, j)
+            render(vetor, new Map([[j, "red"]]))
             await sleep(delay);
         }
     }
 
-    reset(true);
+    reset("ordenado");
 }

@@ -6,7 +6,7 @@ async function shellSort(vetor) {
         for(let i=gap; i < len; i++) {
             if(para) return;
             let j=i;
-            render(vetor, i)
+            render(vetor, new Map([[i, "red"]]))
             await sleep(delay);
             while(j-gap >= 0 && vetor[j] < vetor[j-gap]) {
                 if(para) return;
@@ -14,7 +14,7 @@ async function shellSort(vetor) {
                 vetor[j] = vetor[j-gap];
                 vetor[j-gap] = aux;
                 j-=gap;
-                render(vetor, j)
+                render(vetor, new Map([[j, "red"]]))
                 await sleep(delay);
             }
         }
@@ -22,5 +22,5 @@ async function shellSort(vetor) {
         gap = Math.floor(gap/2);
     }
 
-    reset(true);
+    reset("ordenado");
 }

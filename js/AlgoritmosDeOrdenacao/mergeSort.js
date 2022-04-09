@@ -6,13 +6,13 @@ async function merge(vetor,left,right) {
     while(i < mid && j < right && !para) {
         if(vector[i] < vector[j] && !para) {
             vetor[k] = vector[i];
-            render(vetor,k);
+            render(vetor,new Map([[k, "red"]]));
             await sleep(delay);
             i++;
         }
         else {
             vetor[k] = vector[j];
-            render(vetor,k);
+            render(vetor,new Map([[k, "red"]]));
             await sleep(delay);
             j++;
         }
@@ -22,13 +22,13 @@ async function merge(vetor,left,right) {
     while(k < right && !para) {
         if(i < mid && !para) {
             vetor[k] = vector[i];
-            render(vetor,k);
+            render(vetor,new Map([[k, "red"]]));
             await sleep(delay);
             i++;
         }
         else {
             vetor[k] = vector[j];
-            render(vetor,k);
+            render(vetor,new Map([[k, "red"]]));
             await sleep(delay);
             j++;
         }
@@ -42,6 +42,6 @@ async function mergeSort(vetor,left=0,right=vetor.length) {
         await mergeSort(vetor,left,mid);
         await mergeSort(vetor,mid,right);
         await merge(vetor,left,right);
-        if(left==0 && right==vetor.length && !para) reset(true);
+        if(left==0 && right==vetor.length && !para) reset("ordenado");
     }
 }

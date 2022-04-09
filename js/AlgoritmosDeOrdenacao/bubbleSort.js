@@ -4,7 +4,7 @@ async function bubbleSort(vetor) {
     for(let i=1; i < len; i++) {
         for(let j=0; j < len-i; j++) {
             if(para) return;
-            render(vetor, j);
+            render(vetor, new Map([[j, "red"]]));
             await sleep(delay);
             if(vetor[j] > vetor[j+1]) {
                 let aux = vetor[j];
@@ -13,9 +13,9 @@ async function bubbleSort(vetor) {
             }
         }
         if(para) return;
-        render(vetor, len-i);
+        render(vetor, new Map([[len-i, "red"]]));
         await sleep(delay);
     }
 
-    reset(true);
+    reset("ordenado");
 }
