@@ -9,7 +9,13 @@
 </head>
 <body style="background-color: black; color: white; text-align: center;">
     <div>
+        <button onclick="Tamanho('-')">-</button>
+        <span> Tamanho <span id="TamanhoVetor">20</span> Elementos</span>
+        <button onclick="Tamanho('+')"> + </button>
         <button onclick="parar()"> Desordenar </button>
+        <button onclick="Delay('-')">-</button>
+        <span> Delay <span id="velocidade">500</span>ms</span>
+        <button onclick="Delay('+')"> + </button>
     </div>
     <div>
         <button onclick="ordenacao('bubbleSort')"> BubbleSort </button>
@@ -21,7 +27,7 @@
         <button onclick="ordenacao('heapSort')"> HeapSort </button>
     </div>
     <div>
-        <canvas id="quadro" width="800" height="600" style="border: 1px solid white"></canvas>
+        <canvas id="quadro" width="1000" height="600" style="border: 1px solid white"></canvas>
     </div>  
     <script src="js/sort.js"></script>
     <script src="js/AlgoritmosDeOrdenacao/bubbleSort.js"></script>

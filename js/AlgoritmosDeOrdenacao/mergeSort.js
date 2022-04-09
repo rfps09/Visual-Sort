@@ -5,19 +5,15 @@ async function merge(vetor,left,right) {
 
     while(i < mid && j < right && !para) {
         if(vector[i] < vector[j] && !para) {
-            render(vetor,k);
-            await sleep(250);
             vetor[k] = vector[i];
             render(vetor,k);
-            await sleep(250);
+            await sleep(delay);
             i++;
         }
         else {
-            render(vetor,k);
-            await sleep(250);
             vetor[k] = vector[j];
             render(vetor,k);
-            await sleep(250);
+            await sleep(delay);
             j++;
         }
         k++;
@@ -25,19 +21,15 @@ async function merge(vetor,left,right) {
 
     while(k < right && !para) {
         if(i < mid && !para) {
-            render(vetor,k);
-            await sleep(250);
             vetor[k] = vector[i];
             render(vetor,k);
-            await sleep(250);
+            await sleep(delay);
             i++;
         }
         else {
-            render(vetor,k);
-            await sleep(250);
             vetor[k] = vector[j];
             render(vetor,k);
-            await sleep(250);
+            await sleep(delay);
             j++;
         }
         k++;
