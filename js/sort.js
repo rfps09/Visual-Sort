@@ -54,8 +54,14 @@ function reset(estado = "desordenado") {
 }
 
 function Delay(acao) {
-    if(acao == '+' && delay < 1000) delay += 50;
-    else if(acao == '-' && delay >= 100) delay -= 50;
+    if(delay > 100 || (acao=='+' && delay==100)) {
+        if(acao == '+' && delay < 1000) delay += 50;
+        else if(acao == '-' && delay >= 100) delay -= 50;
+    }
+    else {
+        if(acao == '+' && delay < 100) delay += 10;
+        else if(acao == '-' && delay >= 20) delay -= 10;
+    }
     document.getElementById('velocidade').innerHTML = delay;
 }
 
